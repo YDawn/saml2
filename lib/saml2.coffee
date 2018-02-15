@@ -708,7 +708,7 @@ module.exports.ServiceProvider =
     # Returns:
     #   XML metadata, used during initial SAML configuration
     create_metadata: =>
-      certs = [@certificate].concat @alt_certs
+      certs = [@certificate].concat(@alt_certs).filter((c) -> !!c)
       create_metadata @entity_id, @assert_endpoint, certs, certs
 
 module.exports.IdentityProvider =
